@@ -3,8 +3,13 @@ const POKE_URL = 'https://pokeapi.co/api/v2/pokemon';
 const SPECIES_URL = 'https://pokeapi.co/api/v2/pokemon-species';
 
 async function getPokemon(pokemon) {
-	let response = await fetch(`${POKE_URL}/${pokemon}`);
-	return await response.json();
+	try {
+		let response = await fetch(`${POKE_URL}/${pokemon}`);
+		return await response.json();
+	} catch (err) {
+		// console.log(err);
+		return null;
+	}
 }
 
 async function getEvolutionChain(id) {
